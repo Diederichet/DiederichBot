@@ -28,13 +28,18 @@ async def balls(ctx):
 
 @client.event
 async def on_message(message):
-     if message.author == client.user:
-          return
-     
-     if "GOON" in message.content.upper():
-          await message.channel.delete(message)
-          await message.channel.send("Not Allowed")
-          await message.channel.send('https://spaces-cdn.clipsafari.com/pappp143jfsqozzyz6hobl6itaoe')
+    if message.author == bot.user:
+        return
+
+    if "GOON" in message.content.upper():
+        try:
+            await message.delete()
+        except Exception:
+            pass
+        await message.channel.send("Not Allowed")
+        await message.channel.send('https://spaces-cdn.clipsafari.com/pappp143jfsqozzyz6hobl6itaoe')
+
+    await bot.process_commands(message)
 
 with open('creds.txt') as file:
     firstline = file.readline()
