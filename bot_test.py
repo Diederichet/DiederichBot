@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import asyncio
+import random
 
 # Check for PyNaCl (required for voice)
 try:
@@ -52,19 +53,45 @@ async def join(ctx):
 async def balls(ctx):
     await ctx.send('https://tenor.com/view/casino-royale-bond-james-bond-ouch-hurt-gif-18410770')
 
+@bot.command()
+async def eight_ball(ctx, *, question: str):
+    responses = [
+        "It is certain.",
+        "Without a doubt.",
+        "You may rely on it.",
+        "Yes — definitely.",
+        "Most likely.",
+        "Outlook is good.",
+        "Signs point to yes.",
+        "Reply hazy — try again.",
+        "Better not tell you now.",
+        "Ask again later.",
+        "Cannot predict now.",
+        "Concentrate and ask again.",
+        "Don’t count on it.",
+        "Outlook not so good.",
+        "Very doubtful."
+    ]
+    answer = random.choice(responses)
+    await ctx.send(f"🎱 **Question:** {question}\n**Answer:** {answer}")
+	
 @bot.event
 async def on_message(message):
-    if message.author == bot.user:
+    if message.author.bot:
         return
 
-    if "GOON" in message.content.upper():
+    content = message.content.upper()
+
+    if "GOON" in content:
         try:
             await message.delete()
-        except Exception:
-            pass
-        await message.channel.send("Not Allowed")
-        await message.channel.send('https://spaces-cdn.clipsafari.com/pappp143jfsqozzyz6hobl6itaoe')
+        except Exception as e:
+            print("Delete failed:", e)
 
+        await message.channel.send("Not Allowed")
+        await message.channel.send(
+            "https://spaces-cdn.clipsafari.com/pappp143jfsqozzyz6hobl6itaoe"
+        )
     await bot.process_commands(message)
 
 with open('creds.txt') as file:
