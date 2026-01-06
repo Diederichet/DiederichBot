@@ -4,8 +4,6 @@ import asyncio
 
 intents = discord.Intents.default()
 intents.message_content = True
-client = discord.Client(intents=intents)
-
 bot = commands.Bot(command_prefix='>', intents=intents)
 
 @bot.command()
@@ -15,18 +13,33 @@ async def ping(ctx):
 
 @bot.command()
 async def join(ctx):
+    # Ensure the author is in a voice channel before accessing it
+    if ctx.author.voice is None or ctx.author.voice.channel is None:
+        await ctx.send("You must be connected to a voice channel to use this command.")
+        return
+
     channel = ctx.author.voice.channel
-    if ctx.author.voice is not None:
-        await ctx.author.voice.channel.connect()
+    try:
+        if ctx.voice_client is None:
+            await channel.connect()
+        else:
+            await ctx.voice_client.move_to(channel)
+
         await asyncio.sleep(5)
-        await ctx.voice_client.disconnect()
+
+        vc = ctx.voice_client
+        if vc is not None:
+            await vc.disconnect()
+
         await ctx.send('bye lmao')
+    except Exception as e:
+        await ctx.send(f"Voice action failed: {e}")
 
 @bot.command()
 async def balls(ctx):
     await ctx.send('https://tenor.com/view/casino-royale-bond-james-bond-ouch-hurt-gif-18410770')
 
-@client.event
+@bot.event
 async def on_message(message):
     if message.author == bot.user:
         return
