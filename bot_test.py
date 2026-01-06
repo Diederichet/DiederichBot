@@ -25,12 +25,15 @@ async def join(ctx):
 async def balls(ctx):
     await ctx.send('https://tenor.com/view/casino-royale-bond-james-bond-ouch-hurt-gif-18410770')
 
-
-
-
-
-
-
+@client.event
+async def on_message(message):
+     if message.author == client.user:
+          return
+     
+     if "GOON" in message.content.upper():
+          await message.channel.delete(message)
+          await message.channel.send("Not Allowed")
+          await message.channel.send('https://spaces-cdn.clipsafari.com/pappp143jfsqozzyz6hobl6itaoe')
 
 with open('creds.txt') as file:
     firstline = file.readline()
