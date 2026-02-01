@@ -103,12 +103,12 @@ async def eightball(ctx, *, question: str):
         "Outlook not so good.",
         "Very doubtful."
     ]
+    if not question.strip():  # checks for empty question
+        await ctx.send("Please ask a question!")
+        return
 
-	if not question.strip():
-	    await ctx.send("Please add a question and try again")
-	    return
-	answer = random.choice(responses)
-	await ctx.send(f"{answer}")
+    answer = random.choice(responses)
+    await ctx.send(f"{answer}")
 
 @bot.group(invoke_without_command=True)
 async def tarot(ctx):
