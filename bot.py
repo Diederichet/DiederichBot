@@ -80,7 +80,7 @@ async def balls(ctx, member: discord.Member = None):
     target = random.choice(targets)
 
     await ctx.send(
-        f"💥 **{ctx.author.display_name}** {verb} **{member.mention}**'s {target} 💥\n{gif_url}"
+        f"💥 **{ctx.author.display_name}** {verb} **{member.display_name}**'s {target} 💥\n{gif_url}"
     )
 
 @bot.command()
