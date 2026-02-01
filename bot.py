@@ -104,8 +104,8 @@ async def eightball(ctx, *, question: str):
         "Very doubtful."
     ]
 
-	if question is None
-	    await ctx.send("Please add a question")
+	if not question.strip():
+	    await ctx.send("Please add a question and try again")
 	    return
 	answer = random.choice(responses)
 	await ctx.send(f"{answer}")
