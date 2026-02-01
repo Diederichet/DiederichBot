@@ -105,18 +105,44 @@ async def eight_ball(ctx, *, question: str):
     answer = random.choice(responses)
     await ctx.send(f"🎱 **Question:** {question}\n**Answer:** {answer}")
 
-@bot.command()
-async def tarot(ctx, *, question: str):
-	card = random.choice(tarot_deck)
-	# orientation = random.choice(["upright", "reversed"])
-	orientation = "upright"
-	meaning = card[orientation]
-	await ctx.send(
-        f"🔮 **Tarot Reading** 🔮\n\n"
-        f"**Question:** {question}\n\n"
-        f"🃏 **Card Drawn:** **{card['name']}** ({orientation.title()})\n"
+@bot.group(invoke_without_command=True)
+async def tarot(ctx):
+    await ctx.send(
+        "🔮 **Tarot Commands** 🔮\n"
+        "`>tarot random` — Draw a random tarot card\n"
+        "`>tarot question <your question>` — Ask the tarot a question"
+    )
+
+
+def draw_tarot_card():
+    card = random.choice(tarot_deck)
+    orientation = "upright"  # swap to random later if desired
+    meaning = card[orientation]
+    return card, orientation, meaning
+
+
+@tarot.command(name="random")
+async def tarot_random(ctx):
+    card, orientation, meaning = draw_tarot_card()
+
+    await ctx.send(
+        f"🔮 **Random Tarot Draw** 🔮\n\n"
+        f"🃏 **Card:** **{card['name']}** ({orientation.title()})\n"
         f"📖 **Meaning:** {meaning}"
     )
+
+
+@tarot.command(name="question")
+async def tarot_question(ctx, *, question: str):
+    card, orientation, meaning = draw_tarot_card()
+
+    await ctx.send(
+        f"🔮 **Tarot Reading** 🔮\n\n"
+        f"**Question:** {question}\n\n"
+        f"🃏 **Card:** **{card['name']}** ({orientation.title()})\n"
+        f"📖 **Meaning:** {meaning}"
+    )
+
 
 @bot.event
 async def on_message(message):
