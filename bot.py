@@ -105,8 +105,8 @@ async def eightball(ctx, *, question: str):
     ]
 
 	if question is None
-		await ctx.send("Please add a question")
-		return
+	    await ctx.send("Please add a question")
+	    return
 	answer = random.choice(responses)
 	await ctx.send(f"{answer}")
 
