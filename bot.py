@@ -107,8 +107,8 @@ async def eightball(ctx, *, question: str):
 	if question is None
 		await ctx.send("Please add a question")
 		return
-    answer = random.choice(responses)
-    await ctx.send(f"{answer}")
+	answer = random.choice(responses)
+	await ctx.send(f"{answer}")
 
 @bot.group(invoke_without_command=True)
 async def tarot(ctx):
