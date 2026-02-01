@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import asyncio
+import aiohttp
 import random
 import json
 
@@ -147,7 +148,25 @@ async def tarot_question(ctx, *, question: str):
         f"📖 **Meaning:** {meaning}"
     )
 
+@bot.command()
+async def fact(ctx):
+    url = "https://api.popcat.xyz/v2/fact"
 
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp:
+            if resp.status != 200:
+                await ctx.send(f"❌ API returned status {resp.status}")
+                return
+
+            data = await resp.json()
+
+            if data.get("error"):
+                await ctx.send(f"❌ API Error: {data.get('message')}")
+                return
+
+            fact_text = data.get("message")
+            await ctx.send(f"📚 Random Fact:\n{fact_text}")
+	
 @bot.event
 async def on_message(message):
     if message.author.bot:
