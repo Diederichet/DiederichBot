@@ -132,8 +132,6 @@
     "reversed": "Incomplete goals, lack of closure"
   },
 
-  // -------- MINOR ARCANA --------
-
   { "name": "Ace of Wands", "arcana": "Minor", "suit": "Wands", "upright": "Inspiration, new opportunities", "reversed": "Delays, lack of motivation" },
   { "name": "Two of Wands", "arcana": "Minor", "suit": "Wands", "upright": "Planning, progress", "reversed": "Fear of change, indecision" },
   { "name": "Three of Wands", "arcana": "Minor", "suit": "Wands", "upright": "Expansion, foresight", "reversed": "Obstacles, delays" },
