@@ -84,7 +84,7 @@ async def balls(ctx, member: discord.Member = None):
     )
 
 @bot.command()
-async def eight_ball(ctx, *, question: str):
+async def 8ball(ctx, *, question: str):
     responses = [
         "It is certain.",
         "Without a doubt.",
