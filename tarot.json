@@ -2,134 +2,134 @@
   {
     "name": "The Fool",
     "arcana": "Major",
-    "upright": "New beginnings, spontaneity, innocence, leap of faith",
-    "reversed": "Recklessness, fear of the unknown, holding back"
+    "upright": "The Fool represents new beginnings, a leap of faith, and stepping into the unknown with trust and curiosity. It encourages embracing uncertainty and allowing yourself to grow through experience.",
+    "reversed": "Reversed, The Fool warns against recklessness, poor judgment, or fear of starting something new. You may be hesitating due to uncertainty or rushing ahead without preparation."
   },
   {
     "name": "The Magician",
     "arcana": "Major",
-    "upright": "Manifestation, resourcefulness, power, skill",
-    "reversed": "Manipulation, poor planning, untapped potential"
+    "upright": "The Magician signifies manifestation, confidence, and the ability to turn ideas into reality through focus and skill. It suggests that you already possess the tools needed to succeed.",
+    "reversed": "Reversed, this card can indicate manipulation, scattered energy, or untapped potential. It may be a sign that intentions are unclear or abilities are being misused."
   },
   {
     "name": "The High Priestess",
     "arcana": "Major",
-    "upright": "Intuition, mystery, inner knowledge",
-    "reversed": "Secrets, disconnection from intuition"
+    "upright": "The High Priestess represents intuition, hidden knowledge, and spiritual insight. She advises listening to your inner voice and trusting what lies beneath the surface.",
+    "reversed": "Reversed, this card points to ignored intuition, secrets, or emotional disconnection. You may be overlooking important internal signals or avoiding deeper truths."
   },
   {
     "name": "The Empress",
     "arcana": "Major",
-    "upright": "Nurturing, abundance, femininity, creation",
-    "reversed": "Dependence, creative block, neglect"
+    "upright": "The Empress symbolizes abundance, nurturing energy, and creative expression. She reflects growth, comfort, and the flourishing of relationships or projects.",
+    "reversed": "Reversed, The Empress can indicate creative blocks, dependency, or neglect of self-care. It may suggest imbalance in giving and receiving support."
   },
   {
     "name": "The Emperor",
     "arcana": "Major",
-    "upright": "Authority, structure, stability, leadership",
-    "reversed": "Domination, rigidity, lack of control"
+    "upright": "The Emperor represents structure, authority, and stability built through discipline. He encourages leadership, responsibility, and creating order from chaos.",
+    "reversed": "Reversed, this card warns of rigidity, misuse of power, or loss of control. It may reflect struggles with authority, boundaries, or self-discipline."
   },
   {
     "name": "The Hierophant",
     "arcana": "Major",
-    "upright": "Tradition, conformity, moral guidance",
-    "reversed": "Rebellion, unconventional beliefs"
+    "upright": "The Hierophant stands for tradition, shared values, and spiritual or institutional guidance. It suggests learning through established systems or seeking wisdom from mentors.",
+    "reversed": "Reversed, this card points to rebellion against convention or questioning long-held beliefs. It may encourage forging your own path rather than following tradition."
   },
   {
     "name": "The Lovers",
     "arcana": "Major",
-    "upright": "Love, harmony, meaningful choices",
-    "reversed": "Imbalance, misalignment, poor choices"
+    "upright": "The Lovers represent deep connection, harmony, and meaningful choices aligned with your values. This card often reflects commitment, balance, and mutual understanding.",
+    "reversed": "Reversed, The Lovers indicate disharmony, misalignment, or difficult decisions. It may suggest imbalance in relationships or choices driven by fear rather than values."
   },
   {
     "name": "The Chariot",
     "arcana": "Major",
-    "upright": "Determination, victory, willpower",
-    "reversed": "Lack of direction, aggression, obstacles"
+    "upright": "The Chariot signifies determination, willpower, and victory through discipline. It encourages pushing forward with confidence despite obstacles.",
+    "reversed": "Reversed, this card reflects loss of direction, lack of control, or internal conflict. Progress may be stalled due to scattered focus or resistance."
   },
   {
     "name": "Strength",
     "arcana": "Major",
-    "upright": "Courage, compassion, inner strength",
-    "reversed": "Self-doubt, weakness, insecurity"
+    "upright": "Strength represents inner courage, patience, and compassion over brute force. It highlights emotional resilience and quiet confidence.",
+    "reversed": "Reversed, Strength points to self-doubt, insecurity, or suppressed emotions. You may be underestimating your ability to handle challenges gracefully."
   },
   {
     "name": "The Hermit",
     "arcana": "Major",
-    "upright": "Introspection, solitude, inner guidance",
-    "reversed": "Isolation, withdrawal, loneliness"
+    "upright": "The Hermit symbolizes introspection, solitude, and seeking inner wisdom. It encourages stepping back to gain clarity and understanding.",
+    "reversed": "Reversed, this card may indicate isolation, withdrawal, or avoidance. It can also suggest resisting reflection when it is needed most."
   },
   {
     "name": "Wheel of Fortune",
     "arcana": "Major",
-    "upright": "Change, cycles, fate, luck",
-    "reversed": "Bad luck, resistance to change"
+    "upright": "The Wheel of Fortune represents cycles, fate, and unexpected change. It reminds you that life moves in phases and adaptability is key.",
+    "reversed": "Reversed, this card suggests resistance to change or feeling stuck in an unfavorable cycle. It may be time to regain control where possible."
   },
   {
     "name": "Justice",
     "arcana": "Major",
-    "upright": "Fairness, truth, accountability",
-    "reversed": "Dishonesty, imbalance, unfairness"
+    "upright": "Justice stands for truth, fairness, and accountability. It encourages honesty and taking responsibility for past actions.",
+    "reversed": "Reversed, Justice can indicate dishonesty, imbalance, or avoidance of consequences. There may be bias or misinformation clouding judgment."
   },
   {
     "name": "The Hanged Man",
     "arcana": "Major",
-    "upright": "Pause, surrender, new perspective",
-    "reversed": "Stalling, resistance, indecision"
+    "upright": "The Hanged Man represents surrender, pause, and seeing things from a new perspective. Progress comes through letting go rather than forcing outcomes.",
+    "reversed": "Reversed, this card reflects stagnation, resistance, or unwillingness to change perspective. You may be stuck delaying a necessary decision."
   },
   {
     "name": "Death",
     "arcana": "Major",
-    "upright": "Endings, transformation, rebirth",
-    "reversed": "Fear of change, stagnation"
+    "upright": "Death symbolizes endings that lead to transformation and renewal. It signals closure and the opportunity for profound change.",
+    "reversed": "Reversed, Death indicates fear of change or clinging to the past. Transformation may be delayed but remains inevitable."
   },
   {
     "name": "Temperance",
     "arcana": "Major",
-    "upright": "Balance, moderation, patience",
-    "reversed": "Imbalance, excess, lack of harmony"
+    "upright": "Temperance represents balance, patience, and harmony through moderation. It encourages blending opposing forces into a cohesive whole.",
+    "reversed": "Reversed, this card suggests excess, imbalance, or lack of long-term vision. Adjustments are needed to restore equilibrium."
   },
   {
     "name": "The Devil",
     "arcana": "Major",
-    "upright": "Addiction, attachment, materialism",
-    "reversed": "Breaking free, release, reclaiming power"
+    "upright": "The Devil reflects unhealthy attachments, temptation, or self-imposed limitations. It encourages recognizing what holds you back.",
+    "reversed": "Reversed, The Devil signifies breaking free from constraints and reclaiming control. Awareness leads to liberation."
   },
   {
     "name": "The Tower",
     "arcana": "Major",
-    "upright": "Sudden change, upheaval, revelation",
-    "reversed": "Avoidance of disaster, fear of change"
+    "upright": "The Tower represents sudden upheaval, revelation, and the collapse of false structures. Though disruptive, it clears the way for truth.",
+    "reversed": "Reversed, this card indicates fear of change or narrowly avoiding disaster. Suppressed issues may resurface later if ignored."
   },
   {
     "name": "The Star",
     "arcana": "Major",
-    "upright": "Hope, renewal, inspiration",
-    "reversed": "Despair, lack of faith"
+    "upright": "The Star symbolizes hope, healing, and renewed faith after hardship. It encourages optimism and trust in the future.",
+    "reversed": "Reversed, The Star suggests doubt, discouragement, or loss of faith. Healing may require reconnecting with inner hope."
   },
   {
     "name": "The Moon",
     "arcana": "Major",
-    "upright": "Illusion, intuition, uncertainty",
-    "reversed": "Clarity, release of fear"
+    "upright": "The Moon represents illusion, uncertainty, and subconscious influences. It advises caution and trusting intuition when clarity is lacking.",
+    "reversed": "Reversed, this card indicates confusion lifting and hidden truths emerging. Fear begins to give way to understanding."
   },
   {
     "name": "The Sun",
     "arcana": "Major",
-    "upright": "Joy, success, positivity",
-    "reversed": "Temporary sadness, delayed success"
+    "upright": "The Sun symbolizes joy, clarity, and success. It reflects warmth, confidence, and positive outcomes.",
+    "reversed": "Reversed, The Sun suggests temporary setbacks or diminished optimism. Positivity remains but may be delayed or obscured."
   },
   {
     "name": "Judgement",
     "arcana": "Major",
-    "upright": "Rebirth, awakening, reflection",
-    "reversed": "Self-doubt, ignoring the call"
+    "upright": "Judgement represents awakening, reflection, and answering a higher calling. It encourages embracing growth and learning from the past.",
+    "reversed": "Reversed, this card points to self-doubt, avoidance, or fear of evaluation. You may be ignoring an important realization."
   },
   {
     "name": "The World",
     "arcana": "Major",
-    "upright": "Completion, fulfillment, wholeness",
-    "reversed": "Incomplete goals, lack of closure"
+    "upright": "The World signifies completion, fulfillment, and integration. A major cycle has ended successfully, bringing a sense of wholeness.",
+    "reversed": "Reversed, The World indicates unfinished business or delayed closure. Something still needs resolution before moving forward."
   },
 
   { "name": "Ace of Wands", "arcana": "Minor", "suit": "Wands", "upright": "Inspiration, new opportunities", "reversed": "Delays, lack of motivation" },
