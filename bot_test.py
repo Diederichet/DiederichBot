@@ -54,8 +54,34 @@ async def join(ctx):
         await ctx.send(f"Voice action failed: {e}")
 
 @bot.command()
-async def balls(ctx):
-    await ctx.send('https://tenor.com/view/casino-royale-bond-james-bond-ouch-hurt-gif-18410770')
+async def balls(ctx, member: discord.Member = None):
+    gif_url = "https://tenor.com/view/casino-royale-bond-james-bond-ouch-hurt-gif-18410770"
+
+    if member is None:
+        await ctx.send(gif_url)
+        return
+
+    phrases = [
+        "whacks",
+        "smacks",
+        "clobbers",
+        "obliterates",
+        "destroys"
+    ]
+
+    targets = [
+        "nuts",
+        "balls",
+        "family jewels",
+        "crown jewels"
+    ]
+
+    verb = random.choice(phrases)
+    target = random.choice(targets)
+
+    await ctx.send(
+        f"💥 **{ctx.author.display_name}** {verb} **{member.mention}**'s {target} 💥\n{gif_url}"
+    )
 
 @bot.command()
 async def eight_ball(ctx, *, question: str):
