@@ -2,6 +2,10 @@ import discord
 from discord.ext import commands
 import asyncio
 import random
+import json
+
+with open("tarot.json", "r", encoding="utf-8") as f:
+    tarot_deck = json.load(f)
 
 # Check for PyNaCl (required for voice)
 try:
@@ -74,7 +78,20 @@ async def eight_ball(ctx, *, question: str):
     ]
     answer = random.choice(responses)
     await ctx.send(f"🎱 **Question:** {question}\n**Answer:** {answer}")
-	
+
+@bot.command()
+async def tarot(ctx, *, question: str):
+	card = random.choice(tarot_deck)
+	# orientation = random.choice(["upright", "reversed"])
+	orientation = "upright"
+	meaning = card[orientation]
+	await ctx.send(
+        f"🔮 **Tarot Reading** 🔮\n\n"
+        f"**Question:** {question}\n\n"
+        f"🃏 **Card Drawn:** **{card['name']}** ({orientation.title()})\n"
+        f"📖 **Meaning:** {meaning}"
+    )
+
 @bot.event
 async def on_message(message):
     if message.author.bot:
