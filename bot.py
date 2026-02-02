@@ -164,8 +164,8 @@ async def fact(ctx):
                 await ctx.send(f"❌ API Error: {data.get('message')}")
                 return
 
-            fact_text = data.get("message")
-            await ctx.send(f"📚 Random Fact:\n{fact_text}")
+            fact_text = data.get("message").get("fact")
+            await ctx.send(fact_text)
 	
 @bot.event
 async def on_message(message):
