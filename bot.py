@@ -5,9 +5,6 @@ import aiohttp
 import random
 import json
 
-with open("tarot.json", "r", encoding="utf-8") as f:
-    tarot_deck = json.load(f)
-
 # Check for PyNaCl (required for voice)
 try:
     import nacl  # PyNaCl package provides the 'nacl' module
@@ -53,119 +50,6 @@ async def join(ctx):
         await ctx.send('bye lmao')
     except Exception as e:
         await ctx.send(f"Voice action failed: {e}")
-
-@bot.command()
-async def balls(ctx, member: discord.Member = None):
-    gif_url = "https://tenor.com/view/casino-royale-bond-james-bond-ouch-hurt-gif-18410770"
-
-    if member is None:
-        await ctx.send(gif_url)
-        return
-
-    phrases = [
-        "whacks",
-        "smacks",
-        "clobbers",
-        "obliterates",
-        "destroys"
-    ]
-
-    targets = [
-        "nuts",
-        "balls",
-        "family jewels",
-        "crown jewels"
-    ]
-
-    verb = random.choice(phrases)
-    target = random.choice(targets)
-
-    await ctx.send(
-        f"💥 {ctx.author.display_name} {verb} {member.display_name}'s {target} 💥\n{gif_url}"
-    )
-
-@bot.command()
-async def eightball(ctx, *, question: str):
-    responses = [
-        "It is certain.",
-        "Without a doubt.",
-        "You may rely on it.",
-        "Yes — definitely.",
-        "Most likely.",
-        "Outlook is good.",
-        "Signs point to yes.",
-        "Reply hazy — try again.",
-        "Better not tell you now.",
-        "Ask again later.",
-        "Cannot predict now.",
-        "Concentrate and ask again.",
-        "Don’t count on it.",
-        "Outlook not so good.",
-        "Very doubtful."
-    ]
-    if not question.strip():  # checks for empty question
-        await ctx.send("Please ask a question!")
-        return
-
-    answer = random.choice(responses)
-    await ctx.send(f"{answer}")
-
-@bot.group(invoke_without_command=True)
-async def tarot(ctx):
-    await ctx.send(
-        "🔮 **Tarot Commands** 🔮\n"
-        "`>tarot random` — Draw a random tarot card\n"
-        "`>tarot question <your question>` — Ask the tarot a question"
-    )
-
-
-def draw_tarot_card():
-    card = random.choice(tarot_deck)
-    orientation = "upright"  # swap to random later if desired
-    meaning = card[orientation]
-    return card, orientation, meaning
-
-
-@tarot.command(name="random")
-async def tarot_random(ctx):
-    card, orientation, meaning = draw_tarot_card()
-
-    await ctx.send(
-        f"🔮 **Random Tarot Draw** 🔮\n\n"
-        f"🃏 **Card:** **{card['name']}** ({orientation.title()})\n"
-        f"📖 **Meaning:** {meaning}"
-    )
-
-
-@tarot.command(name="question")
-async def tarot_question(ctx, *, question: str):
-    card, orientation, meaning = draw_tarot_card()
-
-    await ctx.send(
-        f"🔮 **Tarot Reading** 🔮\n\n"
-        f"**Question:** {question}\n\n"
-        f"🃏 **Card:** **{card['name']}** ({orientation.title()})\n"
-        f"📖 **Meaning:** {meaning}"
-    )
-
-@bot.command()
-async def fact(ctx):
-    url = "https://api.popcat.xyz/v2/fact"
-
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as resp:
-            if resp.status != 200:
-                await ctx.send(f"❌ API returned status {resp.status}")
-                return
-
-            data = await resp.json()
-
-            if data.get("error"):
-                await ctx.send(f"❌ API Error: {data.get('message')}")
-                return
-
-            fact_text = data.get("message").get("fact")
-            await ctx.send(fact_text)
 	
 @bot.event
 async def on_message(message):
