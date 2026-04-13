@@ -16,6 +16,14 @@ except Exception:
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='>', intents=intents)
+denied_links = ["https://tenor.com/view/stop-sign-red-gif-25972505", 
+				"https://tenor.com/view/no-babyjake-nope-not-allowed-cant-do-that-gif-21337058", 
+				"https://tenor.com/view/you-can-not-say-that-youre-cancelled-you-are-cancelled-censored-not-allowed-gif-27665358",
+				"https://tenor.com/view/woah-bro-you-cant-say-that-skeleton-pepsi-gif-23570205",
+				"https://tenor.com/view/1984-george-orwell-george-orwell-1984-1984-chips-1984-ruffles-gif-7144052804264359069",
+				"https://tenor.com/view/youre-fired-donald-trump-the-apprentice-point-gif-8557097",
+				"https://tenor.com/view/disgust-disgusting-puke-vomit-eww-gif-19262390",
+				"https://tenor.com/view/lmfao-dead-stan-twitter-emoji-gif-23492742"]
 
 @bot.command()
 async def ping(ctx):
@@ -64,9 +72,9 @@ async def on_message(message):
         except Exception as e:
             print("Delete failed:", e)
 
-        await message.channel.send("Not Allowed")
+        await message.channel.send("Rule 5: Abosultely no G**NING Allowed!1!")
         await message.channel.send(
-            "https://spaces-cdn.clipsafari.com/pappp143jfsqozzyz6hobl6itaoe"
+            random.choice(denied_links)
         )
     await bot.process_commands(message)
 
