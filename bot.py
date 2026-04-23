@@ -4,6 +4,7 @@ import asyncio
 import aiohttp
 import random
 import json
+import os
 
 # Check for PyNaCl (required for voice)
 try:
@@ -26,9 +27,9 @@ denied_links = ["https://tenor.com/view/stop-sign-red-gif-25972505",
 				"https://tenor.com/view/lmfao-dead-stan-twitter-emoji-gif-23492742"]
 
 async def load_extensions():
-    for filename in os.listdir("./Functions"):
+    for filename in os.listdir("./functions"):
         if filename.endswith(".py"):
-            await bot.load_extension(f"Functions.{filename[:-3]}")
+            await bot.load_extension(f"functions.{filename[:-3]}")
 
 @bot.command()
 async def ping(ctx):
@@ -87,4 +88,3 @@ with open('creds.txt') as file:
     firstline = file.readline()
 
 bot.run(firstline)
-
