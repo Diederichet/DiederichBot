@@ -25,6 +25,11 @@ denied_links = ["https://tenor.com/view/stop-sign-red-gif-25972505",
 				"https://tenor.com/view/disgust-disgusting-puke-vomit-eww-gif-19262390",
 				"https://tenor.com/view/lmfao-dead-stan-twitter-emoji-gif-23492742"]
 
+async def load_extensions():
+    for filename in os.listdir("./Functions"):
+        if filename.endswith(".py"):
+            await bot.load_extension(f"Functions.{filename[:-3]}")
+
 @bot.command()
 async def ping(ctx):
 	await ctx.send('pong')
