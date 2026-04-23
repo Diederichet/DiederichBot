@@ -3,9 +3,11 @@ from discord.ext import commands
 import random
 import aiohttp
 
+
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
 
     @commands.command()
     async def balls(self, ctx, member: discord.Member = None):
@@ -24,6 +26,7 @@ class Fun(commands.Cog):
             f"{member.display_name}'s "
             f"{random.choice(targets)} 💥\n{gif_url}"
         )
+
 
     @commands.command()
     async def eightball(self, ctx, *, question: str):
@@ -54,7 +57,8 @@ class Fun(commands.Cog):
             await ctx.send("Please ask a question!")
             return
 
-        await ctx.send(f"{random.choice(responses)}")
+        await ctx.send(random.choice(responses))
+
 
     @commands.command()
     async def fact(self, ctx):
@@ -62,12 +66,20 @@ class Fun(commands.Cog):
 
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as resp:
+
                 if resp.status != 200:
                     await ctx.send("Could not fetch a fact.")
                     return
 
                 data = await resp.json()
-                await ctx.send(f"{data.get('message').get('fact')}")
 
-def setup(bot):
-    bot.add_cog(Fun(bot))
+                fact = data.get("message", {}).get("fact")
+
+                if fact:
+                    await ctx.send(fact)
+                else:
+                    await ctx.send("Fact format error.")
+
+
+async def setup(bot):
+    await bot.add_cog(Fun(bot))
