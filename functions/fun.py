@@ -146,7 +146,7 @@ class Fun(commands.Cog):
 
         await ctx.send(
             f"\"{quote}\"\n"
-            f"- **{author}**"
+            f"-{author}"
         )
 
 
