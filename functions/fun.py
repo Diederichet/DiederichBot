@@ -89,13 +89,10 @@ class Fun(commands.Cog):
                 if resp.status != 200:
                     await ctx.send("Response error.")
                     return
-
                 data = await resp.json()
-
                 guess = data.get("age")
-
                 if guess:
-                    await ctx.send(guess)
+                    await ctx.send("The estimated age of the name " + name + " is: " + guess)
                 else:
                     await ctx.send("Age response format error.")
 
