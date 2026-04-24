@@ -91,26 +91,27 @@ class Fun(commands.Cog):
 
     async def get_quote(self):
         url = "https://api.breakingbadquotes.xyz/v1/quotes"
-        # Adding a User-Agent makes the request look like it's coming from a browser
-        headers = {"User-Agent": "Mozilla/5.0"}
+        
+        # Comprehensive headers to mimic a real browser
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+        }
         
         try:
+            # Tip: In a real bot, you'd define this session once in __init__
             async with aiohttp.ClientSession(headers=headers) as session:
                 async with session.get(url, timeout=10) as resp:
                     if resp.status == 200:
                         data = await resp.json()
-                        # Verify data is a list and not empty
-                        if isinstance(data, list) and len(data) > 0:
-                            quote = data[0].get("quote", "No quote found")
-                            author = data[0].get("author", "Unknown")
-                            return quote, author
-                        return "API returned empty data.", "System"
+                        return data[0].get("quote"), data[0].get("author")
+                    elif resp.status == 429:
+                        return "The API is rate-limiting us. Try again in a minute!", "System"
                     else:
-                        # This will tell you exactly what status code you're getting
-                        return f"API Error: Status {resp.status}", "System"
+                        return f"API Error: {resp.status}", "System"
         except Exception as e:
-            print(f"DEBUG: Quote error -> {e}")
-            return f"Connection Error: {e}", "System"
+            return f"Connection failed: {e}", "System"
 
 
     async def run_quote_quiz(self, ctx, quote, author):
