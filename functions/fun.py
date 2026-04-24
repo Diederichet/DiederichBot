@@ -90,16 +90,27 @@ class Fun(commands.Cog):
     # -------------------------
 
     async def get_quote(self):
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://api.breakingbadquotes.xyz/v1/quotes") as resp:
-                if resp.status == 200:
-                    data = await resp.json()
-                    # Assign them here while inside the block
-                    quote = data[0].get("quote")
-                    author = data[0].get("author")
-                    return quote, author
-                else:
-                    return "Better call Saul... because the API is down.", "System"
+        url = "https://api.breakingbadquotes.xyz/v1/quotes"
+        # Adding a User-Agent makes the request look like it's coming from a browser
+        headers = {"User-Agent": "Mozilla/5.0"}
+        
+        try:
+            async with aiohttp.ClientSession(headers=headers) as session:
+                async with session.get(url, timeout=10) as resp:
+                    if resp.status == 200:
+                        data = await resp.json()
+                        # Verify data is a list and not empty
+                        if isinstance(data, list) and len(data) > 0:
+                            quote = data[0].get("quote", "No quote found")
+                            author = data[0].get("author", "Unknown")
+                            return quote, author
+                        return "API returned empty data.", "System"
+                    else:
+                        # This will tell you exactly what status code you're getting
+                        return f"API Error: Status {resp.status}", "System"
+        except Exception as e:
+            print(f"DEBUG: Quote error -> {e}")
+            return f"Connection Error: {e}", "System"
 
 
     async def run_quote_quiz(self, ctx, quote, author):
@@ -146,7 +157,7 @@ class Fun(commands.Cog):
 
         await ctx.send(
             f"\"{quote}\"\n"
-            f"- **{author}**"
+            f"-**{author}**"
         )
 
 
