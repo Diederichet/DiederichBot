@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = [
+[
     {
         "quote": "I'm sorry, what were you asking me? Oh, yes, that stupid plastic container I asked you to buy. You see, hydrofluoric acid won't eat through plastic; it will however dissolve metal, rock, glass, ceramic. So there's that.",
         "author": "Walter White"
@@ -697,4 +695,4 @@ module.exports = [
         "quote": "We? Who's we? There is no we.",
         "author": "Walter White"
     }
-];
+]
