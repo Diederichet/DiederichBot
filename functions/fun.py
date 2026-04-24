@@ -95,8 +95,9 @@ class Fun(commands.Cog):
                 "https://api.breakingbadquotes.xyz/v1/quotes"
             ) as resp:
                 data = await resp.json()
+                quote_data = data[0]
 
-        return data.get("quote"), data.get("author")
+        return quote_data.get("quote"), quote_data.get("author")
 
 
     async def run_quote_quiz(self, ctx, quote, author):
