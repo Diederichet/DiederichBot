@@ -134,7 +134,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def bbquote(self, ctx, mode: str = None):
-
+        print("BBQUOTE CALLED")
         quote, author = await self.get_quote()
 
         if mode == "quiz":
