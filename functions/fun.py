@@ -96,7 +96,7 @@ class Fun(commands.Cog):
             ) as resp:
                 data = await resp.json()
 
-        return data[0]["quote"], data[0]["author"]
+        return data.get("quote"), data.get("author")
 
 
     async def run_quote_quiz(self, ctx, quote, author):
