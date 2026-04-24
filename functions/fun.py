@@ -8,6 +8,20 @@ import asyncio
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        
+        # Load local data once on startup
+        base_dir = os.path.dirname(__file__)
+        
+        # Adjusting path to match your data structure: ../data/bb_quotes.json
+        # Make sure your file is named 'bb_quotes.json' or change the string below
+        json_path = os.path.join(base_dir, "..", "data", "bbquotes.json")
+
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                self.quotes = json.load(f)
+        except FileNotFoundError:
+            print(f"Warning: Could not find quotes file at {json_path}")
+            self.quotes = []
 
 
     @commands.command()
@@ -89,33 +103,7 @@ class Fun(commands.Cog):
     # Quote system
     # -------------------------
 
-    async def get_quote(self):
-        url = "https://api.breakingbadquotes.xyz/v1/quotes"
-        
-        # Comprehensive headers to mimic a real browser
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9",
-        }
-        
-        try:
-            # Tip: In a real bot, you'd define this session once in __init__
-            async with aiohttp.ClientSession(headers=headers) as session:
-                async with session.get(url, timeout=10) as resp:
-                    if resp.status == 200:
-                        data = await resp.json()
-                        return data[0].get("quote"), data[0].get("author")
-                    elif resp.status == 429:
-                        return "The API is rate-limiting us. Try again in a minute!", "System"
-                    else:
-                        return f"API Error: {resp.status}", "System"
-        except Exception as e:
-            return f"Connection failed: {e}", "System"
-
-
     async def run_quote_quiz(self, ctx, quote, author):
-
         await ctx.send(
             f"**Who said this?**\n\n"
             f"\"{quote}\"\n\n"
@@ -138,6 +126,7 @@ class Fun(commands.Cog):
             guess = msg.content.lower()
             correct = author.lower()
 
+            # Check if any part of the name is in the guess
             if any(part in guess for part in correct.split()):
                 await ctx.send(f"Correct! It was **{author}**.")
             else:
@@ -146,11 +135,15 @@ class Fun(commands.Cog):
         except asyncio.TimeoutError:
             await ctx.send(f"Time's up! It was **{author}**.")
 
-
     @commands.command()
     async def bbquote(self, ctx, mode: str = None):
-        print("BBQUOTE CALLED")
-        quote, author = await self.get_quote()
+        if not self.quotes:
+            await ctx.send("No quotes loaded in the local database.")
+            return
+
+        selected = random.choice(self.quotes)
+        quote = selected.get("quote")
+        author = selected.get("author")
 
         if mode == "quiz":
             await self.run_quote_quiz(ctx, quote, author)
@@ -158,7 +151,7 @@ class Fun(commands.Cog):
 
         await ctx.send(
             f"\"{quote}\"\n"
-            f"-**{author}**"
+            f"- **{author}**"
         )
 
 
