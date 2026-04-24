@@ -11,19 +11,12 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-        # Load local data once on startup
+        # Safe path loading
         base_dir = os.path.dirname(__file__)
-        
-        # Adjusting path to match your data structure: ../data/bb_quotes.json
-        # Make sure your file is named 'bb_quotes.json' or change the string below
         json_path = os.path.join(base_dir, "..", "data", "bbquotes.json")
 
-        try:
-            with open(json_path, "r", encoding="utf-8") as f:
-                self.quotes = json.load(f)
-        except FileNotFoundError:
-            print(f"Warning: Could not find quotes file at {json_path}")
-            self.quotes = []
+        with open(json_path, "r", encoding="utf-8") as f:
+            self.quotes = json.load(f)
 
 
     @commands.command()
