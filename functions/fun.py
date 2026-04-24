@@ -91,13 +91,15 @@ class Fun(commands.Cog):
 
     async def get_quote(self):
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://api.breakingbadquotes.xyz/v1/quotes"
-            ) as resp:
-                data = await resp.json()
-                quote_data = data[0]
-
-        return quote_data.get("quote"), quote_data.get("author")
+            async with session.get("https://api.breakingbadquotes.xyz/v1/quotes") as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                    # Assign them here while inside the block
+                    quote = data[0].get("quote")
+                    author = data[0].get("author")
+                    return quote, author
+                else:
+                    return "Better call Saul... because the API is down.", "System"
 
 
     async def run_quote_quiz(self, ctx, quote, author):
