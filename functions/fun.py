@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 import random
 import aiohttp
+import os
+import json
 import asyncio
 
 
