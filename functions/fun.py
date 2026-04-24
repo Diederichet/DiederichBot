@@ -80,6 +80,25 @@ class Fun(commands.Cog):
                 else:
                     await ctx.send("Fact format error.")
 
+    @commands.command()
+    async def age(self, ctx, *, name: str):
+        url = "https://api.agify.io?name=" + name
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as resp:
+
+                if resp.status != 200:
+                    await ctx.send("Response error.")
+                    return
+
+                data = await resp.json()
+
+                guess = data.get("age")
+
+                if guess:
+                    await ctx.send(guess)
+                else:
+                    await ctx.send("Age response format error.")
+
 
 async def setup(bot):
     await bot.add_cog(Fun(bot))
